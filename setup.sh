@@ -61,7 +61,7 @@ main() {
 
     if [ -e terraform/rancher.tf ]; then
         echo "error: configuration for a previous run has been found"
-        echo "    clean the configuration (./setup -c)"
+        echo "    clean the configuration (./setup.sh -c)"
         exit
     fi
 
