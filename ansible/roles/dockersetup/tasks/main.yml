@@ -8,12 +8,12 @@
         update_cache: yes
         cache_valid_time: 86400
     when: docker_installed.stdout.find('Docker version')
--   name: Install pre-reqs (python-pip, zfs, build-essential and linux-headers-generic)
+-   name: Install pre-reqs (python-pip, zfsutils, build-essential and linux-headers-generic)
     apt: name={{ item.name }}
     with_items:
     -   { name: 'linux-headers-generic' }
     -   { name: 'build-essential' }
-    -   { name: 'zfs' }
+    -   { name: 'zfsutils' }
     -   { name: 'python-pip' }
     when: docker_installed.stdout.find('Docker version')
 -   name: Install docker-py using pip

@@ -396,7 +396,7 @@ getConfigFromUser() {
     # get networks from the current triton profile to prompt
     local networks=$(triton networks -oname,id | grep -v "^NAME.*ID$" | tr -s " " | tr " " "=" | sort)
     # get packages for the current triton profile to prompt
-    local packages=$(triton packages -oname,id | grep "\-kvm-" | grep -v "^NAME.*ID$" | tr -s " " | tr " " "=" | sort)
+    local packages=$(triton packages -oname,id | grep -e "kvm" -e "k8s" | grep -v "^NAME.*ID$" | tr -s " " | tr " " "=" | sort)
 
     local tmp=0
     local gotValidInput=false
@@ -581,7 +581,7 @@ getConfigFromUser() {
         tmp=$((tmp + 1))
         echo -e "$tmp.\t$(echo $package | sed 's/=/  /g')"
         # get default location of package
-        if [[ "$package" == "k4-highcpu-kvm-7.75G="* ]]; then
+        if [[ "$package" == "k8s-32G"* ]]; then
             packageLocation=$tmp
         fi
     done
@@ -719,7 +719,7 @@ getNetworkIDs() {
     echo "$networks" | sed 's/^,\(.*\)$/\1/' | sed 's/\(.*\),$/\1/'
 }
 getPackageID() {
-    echo "$(triton packages -oname,id | grep "\-kvm-" | grep -v "^NAME.*ID$" | tr -s " " | sort | sed -n "$1"p | awk 'NF>1{print $NF}')"
+    echo "$(triton packages -oname,id | grep -e "kvm" -e "k8s" | grep -v "^NAME.*ID$" | tr -s " " | sort | sed -n "$1"p | awk 'NF>1{print $NF}')"
 }
 exportVars() {
     grep -v "^$" config > config.tmp

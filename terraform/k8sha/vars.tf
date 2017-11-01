@@ -13,11 +13,11 @@ variable "root_authorized_keys" {
 }
 
 variable "image" {
-  default     = "0867ef86-e69d-4aaa-ba3b-8d2aef0c204e"
-  description = "long image ID, default is ubuntu-certified-16.04"
+  default     = "80e13c87-76c8-4a25-bd1d-da3c846ccce8"
+  description = "long image ID, default is ubuntu-certified-17.04"
 }
 
 variable "package" {
-  default     = "k4-highcpu-kvm-1.75G"
-  description = "triton package, default is k4-highcpu-kvm-1.75G"
+  default     = "k8s_32G"
+  description = "triton package, default is k8s_32G"
 }
