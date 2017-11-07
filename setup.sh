@@ -20,25 +20,25 @@ main() {
         OS="`uname`"
         case $OS in
             'Linux')
-                wget https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip
+                wget --no-check-certificate https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip
                 unzip -o terraform_0.9.11_linux_amd64.zip
                 rm terraform_0.9.11_linux_amd64.zip
                 cd ..
                 ;;
             'FreeBSD')
-                wget https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_freebsd_amd64.zip
+                wget --no-check-certificate https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_freebsd_amd64.zip
                 unzip terraform_0.9.11_freebsd_amd64.zip
                 rm terraform_0.9.11_freebsd_amd64.zip
                 cd ..
                 ;;
             'Darwin')
-                wget https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_darwin_amd64.zip
+                wget --no-check-certificate https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_darwin_amd64.zip
                 unzip terraform_0.9.11_darwin_amd64.zip
                 rm terraform_0.9.11_darwin_amd64.zip
                 cd ..
                 ;;
             'SunOS')
-                wget https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_solaris_amd64.zip
+                wget --no-check-certificate https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_solaris_amd64.zip
                 unzip terraform_0.9.11_solaris_amd64.zip
                 rm terraform_0.9.11_solaris_amd64.zip
                 cd ..
@@ -53,7 +53,7 @@ main() {
         echo "Terraform for $OS added to $(pwd)/bin/ directory."
         echo ""
     fi
-    
+
     if [[ ! -z "$1" && "$1" == "-a" ]]; then
         setVarDefaults
         setConfigFromTritonENV
@@ -405,7 +405,7 @@ getConfigFromUser() {
     local tmp=0
     local gotValidInput=false
     local tmp_ValidatedInput
-    
+
     echo "---------------"
     gotValidInput=false
     while ! $gotValidInput; do
